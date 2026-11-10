@@ -1,4 +1,4 @@
-AETOS Office Assistant - Windows launcher preview 0.2.8
+AETOS Office Assistant - Windows launcher preview 0.2.9
 
 FIX IN 0.2.8
 Normalizes w14:paraId and w14:textId bookkeeping in footnotes/endnotes only.

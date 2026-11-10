@@ -1,8 +1,8 @@
 /* global Office */
-import { Connections, Session, SafeError, messages, bytes, suggestionLimit } from './core.js?v=0.2.8';
-import { generate } from './transport.js?v=0.2.8';
-import { WordHost } from './word.js?v=0.2.8';
-import { VERSION } from './version.js?v=0.2.8';
+import { Connections, Session, SafeError, messages, bytes, suggestionLimit } from './core.js?v=0.2.9';
+import { generate } from './transport.js?v=0.2.9';
+import { WordHost } from './word.js?v=0.2.9';
+import { VERSION } from './version.js?v=0.2.9';
 const $ = id => document.getElementById(id), session = new Session();
 $('build-version').textContent = `v${VERSION}`;
 let connections, host, controller, preparing = false, applying = false, monitoring = false, ready = false, monitorPromise = Promise.resolve();
