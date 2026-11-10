@@ -4,8 +4,10 @@ $outputDir = Join-Path $PSScriptRoot 'release'
 New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
 $resource = Join-Path $outputDir 'aetos-web.zip'
 Compress-Archive -Path (Join-Path $projectDir 'dist\*') -DestinationPath $resource -Force
+$version = ([regex]::Match((Get-Content (Join-Path $projectDir 'src\version.js') -Raw), "VERSION\s*=\s*'([^']+)'")).Groups[1].Value
+if (-not $version) { throw 'Could not read VERSION from src/version.js' }
 $compiler = Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe'
-$binary = Join-Path $outputDir 'AETOS-Office-Assistant.exe'
+$binary = Join-Path $outputDir "AETOS-Office-Assistant-$version.exe"
 $iconPath = Join-Path $outputDir 'aetos.ico'
 $sizes = @(16,32,48,64,128,256)
 $frames = @($sizes | ForEach-Object { ,([IO.File]::ReadAllBytes((Join-Path $projectDir "dist\assets\icon-$_.png"))) })
