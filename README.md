@@ -1,6 +1,6 @@
 # AETOS Office Assistant
 
-Independent Microsoft Word task-pane add-in based on the supplied Writing Assistant PRD, dated 19 October 2026. Version 0.1.0 is an implementation preview, **not a declaration of verified WordCraft feature parity**. The source, built application, sideloadable XML manifest, automated tests and explicit parity/host-test checklists are included.
+Independent Microsoft Word task-pane add-in — a rewrite of the author's WordCraft plugin, based on the Writing Assistant PRD dated 19 October 2026. Version 0.2.8 is an implementation preview, **not a declaration of verified WordCraft feature parity**. The source, built application, sideloadable XML manifest, automated tests and explicit parity/host-test checklists are included.
 
 **Windows users:** the new desktop launcher in `desktop/release/AETOS-Office-Assistant.exe` embeds this web application and handles local setup, HTTPS, Word developer registration and optional startup at sign-in. No Node/npm commands are required to use it. Read `desktop/START_HERE.txt` for its preview status and installation steps. The development commands below remain available for source builds and non-launcher hosting.
 
