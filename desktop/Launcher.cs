@@ -138,7 +138,7 @@ namespace Aetos {
       dynamic shortcut = shell.CreateShortcut(Shortcut);
       shortcut.TargetPath = InstalledExe; shortcut.WorkingDirectory = Home; shortcut.Description = Title; shortcut.Save();
       System.Runtime.InteropServices.Marshal.FinalReleaseComObject(shortcut); System.Runtime.InteropServices.Marshal.FinalReleaseComObject(shell);
-      File.WriteAllText(Path.Combine(Home, "installed.txt"), "AETOS Office Assistant desktop 0.2.0");
+      File.WriteAllText(Path.Combine(Home, "installed.txt"), "AETOS Office Assistant desktop 0.2.8");
     }
     public static void SetAutoStart(bool enabled) {
       using (RegistryKey key = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run")) {

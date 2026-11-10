@@ -1,6 +1,6 @@
 # Real Word host verification report
 
-Product: AETOS Office Assistant 0.1.0. Report date: 19 October 2026.
+Product: AETOS Office Assistant 0.2.8. Report date: 19 October 2026.
 
 ## Actual results
 
