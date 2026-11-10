@@ -1,0 +1,5 @@
+PASS embedded web files and rewritten manifest
+PASS ephemeral localhost certificate generation (NOT trusted/installed)
+PASS in-memory HTTP routes, security headers, traversal, write-method and foreign-host refusal
+BLOCKED: live loopback TLS test; operating system socket policy: AccessDenied
+NOT RUN: real Word sideload UI, certificate trust, sign-in startup, Undo/protection/Track Changes

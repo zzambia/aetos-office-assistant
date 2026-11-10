@@ -1,0 +1,5 @@
+PASS embedded web files and rewritten manifest
+PASS ephemeral localhost certificate generation (NOT trusted/installed)
+PASS in-memory HTTP routes, security headers, traversal, write-method and foreign-host refusal
+PASS 12 GET/HEAD query-string equivalence checks, including the exact Word host-info URL; missing assets still return 404
+Route-only run: no certificate trust, registry changes, network connection or Word installation performed.

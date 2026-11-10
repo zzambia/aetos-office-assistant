@@ -1,0 +1,162 @@
+AETOS Office Assistant - Windows launcher preview 0.2.8
+
+FIX IN 0.2.8
+Normalizes w14:paraId and w14:textId bookkeeping in footnotes/endnotes only.
+Note text, formatting, structure and w:id references remain checked.
+Diagnostics now name recognized changed attributes without their values.
+This targets the likely cause of the reported note attribute differences;
+the original report omitted attribute names, so real Word confirmation is needed.
+56 automated tests pass.
+
+UPDATE
+Close Word and quit AETOS Office Assistant using its tray icon. Run the new
+executable, reopen Word, click inside the pane and press Ctrl+F5.
+Confirm v0.2.8. If still blocked, paste the new Copy diagnostic report.
+
+CHANGE IN 0.2.7
+If the document package changes during preparation but the selected text and
+range are unchanged, generation is available for review and copying. Automatic
+insertion remains disabled for that uncertain snapshot. A Copy diagnostic
+button reports standard part names and structural changes without document
+text, attribute values, custom filenames, content hashes or model credentials.
+The cause of the reported unstable part has NOT yet been identified.
+54 automated tests pass; actual Word validation is outstanding.
+
+UPDATE
+Close Word and quit AETOS Office Assistant using its tray icon. Run the new
+executable, reopen Word, click inside the pane and press Ctrl+F5.
+Confirm v0.2.7. Generate, then use Copy diagnostic and paste it into support.
+
+FIX IN 0.2.6
+Selection validation inspects the selected main-document body in Flat OPC,
+not tables or objects in supporting header/glossary parts. Selecting all plain
+text inside a cell or placing a cursor in an empty cell is allowed. Whole-cell
+markers and cross-cell selections remain refused. 51 automated tests pass.
+Actual Word validation remains outstanding.
+
+UPDATE
+Close Word and quit AETOS Office Assistant from its tray icon. Run the new
+executable, reopen Word, click inside the pane and press Ctrl+F5.
+Confirm v0.2.6 in the footer.
+
+FIX IN 0.2.5
+Recognizes add-in metadata by OPC content type and alternate folder paths.
+Ignores unused content-type declarations and root relationship ID renumbering.
+All JavaScript module URLs carry the build version; the footer displays v0.2.5.
+Error messages include the running build and more specific change categories.
+49 automated tests pass. Verification in real Word remains outstanding.
+
+UPDATE
+Close Word and quit AETOS Office Assistant using its tray icon. Run the new
+executable, reopen Word, and confirm v0.2.5 at the bottom of the add-in pane.
+
+FIX IN 0.2.4
+Ignore embedded add-in UI state and its package references during document
+freshness checks. Normalize relationship and content-type record ordering.
+Content, formatting, protection, comments, custom XML, images and external
+links remain checked. All 46 automated tests pass. Live Word is unverified.
+
+FIX IN 0.2.3
+Document freshness now compares normalized XML instead of raw export XML.
+It ignores revision-session bookkeeping, proofing state, cached page breaks,
+view/zoom settings and Word's internal GoBack bookmark. Text, formatting,
+headers/footers, ordinary bookmarks, document protection and Track Changes
+settings remain checked. Namespace/attribute ordering is normalized too.
+43 automated tests pass, including simulated export churn with no user edits.
+This has not yet been verified against the user's real Word export.
+If the message persists without edits, report the new category in parentheses;
+the message does not expose document contents.
+
+NEW IN 0.2.2
+Uses the supplied official logo for the Windows executable, tray icon,
+setup window, Word add-in listing and task pane. All logo files are embedded.
+Source: https://www.aetos-ai.it/images/aetos_logo_short.svg
+
+UPDATE FROM 0.2.0
+Close Word and choose Quit AETOS Office Assistant from the tray icon.
+Extract this new ZIP and run the new AETOS-Office-Assistant.exe.
+It updates the installed executable while retaining the existing certificate,
+startup setting and model connections. Reopen Word and its add-in panel.
+
+FIX IN 0.2.1
+Word's _host_Info query string is now ignored only for static asset lookup.
+The browser URL is preserved so Office.js can read its host information.
+Regression checks cover the reported URL, root URL, encoded query values,
+JavaScript/image query strings, GET/HEAD and missing assets.
+
+INSTALL
+1. Extract this ZIP to a folder.
+2. Double-click AETOS-Office-Assistant.exe.
+3. Click Set up AETOS Office Assistant. Approve the AETOS Office Assistant localhost certificate if Windows asks.
+4. Restart Word if it was already open.
+5. In Word, open Add-ins / My Add-ins and select AETOS Office Assistant
+   under Developer Add-ins (the exact label varies by Word version).
+6. In AETOS Office Assistant, choose Model connection and save your endpoint, model and key.
+
+No Node.js, npm, PowerShell commands or terminal windows are needed to USE it.
+The source/build scripts are supplied only for developers.
+
+DAILY USE
+Leave “Start automatically when I sign in to Windows” selected during setup.
+AETOS Office Assistant then runs in the background with a tray icon beside the clock.
+You can also start it from the Start menu: AETOS Office Assistant.
+Right-click its tray icon to open Word, change startup, quit or remove setup.
+Quitting stops the server and the Word panel will not work until AETOS Office Assistant restarts.
+
+REQUIREMENTS
+Windows 10/11 with .NET Framework 4.8 and current Microsoft 365 Word/WebView2.
+This executable is for Windows; it is not a macOS installer.
+Office.js is fetched from Microsoft's official CDN at runtime, so this does
+not make the Word add-in completely offline.
+
+WHAT SETUP DOES
+- Copies the executable and manifest under:
+  %LOCALAPPDATA%\AETOS Office Assistant\OfficeAssistant
+- Registers this add-in for the current user using Office's developer catalog.
+- Creates a unique localhost TLS certificate and trusts its public certificate
+  in the CURRENT USER certificate store. No shared private key is shipped.
+- Protects its saved private certificate with Windows DPAPI for your account.
+- Creates a Start menu shortcut and, if selected, a current-user sign-in entry.
+- Serves only embedded static assets on https://localhost:38473.
+  No public network listener, remote proxy or Windows service is installed.
+
+SETTINGS AND PROVIDERS
+Because this launcher uses port 38473 instead of the previous development
+port 3000, previously saved model connections are not automatically migrated.
+Re-enter them in the new panel. Your provider must permit CORS requests from
+https://localhost:38473. Model API keys remain visible and unencrypted in
+the panel's local browser storage, as specified in the original PRD.
+The native launcher never reads those keys or proxies generation requests.
+
+REMOVAL
+Tray icon > Remove AETOS Office Assistant setup removes its Word registration, startup entry,
+Start menu shortcut and locally trusted certificate. It leaves the executable
+and browser connection settings. Exit the app before deleting its executable.
+To remove a saved API key, clear it and save in Model connection before removal.
+Existing shared-folder registrations from the earlier manual setup are not
+removed automatically.
+
+VERIFICATION STATUS
+Compiled successfully on Windows using the built-in .NET Framework compiler.
+Passed: embedded files/manifest, certificate generation, in-memory HTTP routes,
+security headers, traversal refusal, write-method refusal, foreign-host refusal.
+Live loopback TLS test: BLOCKED by the execution environment's socket policy
+(AccessDenied). The server has not been verified with a browser or Word here.
+Actual certificate trust, Word sideloading, sign-in startup, Undo, protection and
+Track Changes have NOT been exercised on a real user installation.
+The underlying add-in's 35 automated tests previously passed.
+
+This is an UNSIGNED preview executable, not a signed production installer.
+Windows or your organization may warn about or block unsigned applications
+or developer add-ins. No policy bypass or automatic security weakening is
+included. Organizational deployments should be approved/signed by your IT team.
+
+SOURCE
+AETOS-Office-Assistant-source.zip contains the full source, built web app and test documentation.
+Developers can rebuild using desktop/build.ps1 after building the web assets.
+The compiler is Windows' .NET Framework csc.exe; no NuGet packages are required.
+The script is not needed for end users.
+
+Registration reference (Microsoft OfficeDev tooling):
+https://github.com/OfficeDev/office-toolbox
+https://github.com/OfficeDev/generator-office/issues/810
