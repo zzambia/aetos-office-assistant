@@ -93,10 +93,45 @@ Cut a release by pushing a tag:
 ```sh
 git tag v0.2.11
 git push origin v0.2.11
+npm run sync          # mirror branch and tags to the internal GitLab
 ```
 
 Code signing and notarization are **opt-in** and documented in [CI.md](CI.md).
 Without those secrets the pipeline produces unsigned preview artifacts.
+
+## Keeping the GitLab mirror in sync
+
+GitHub is the primary remote (`origin`). The internal GitLab server is a
+secondary remote named `gitlab`:
+
+```sh
+git remote -v
+gitlab  ssh://git@git.internal.youbiquo.eu:2222/aetos/aetos-office-assistant.git
+```
+
+Mirror the current branch and tags with:
+
+```sh
+npm run sync                  # or: scripts/sync-gitlab.sh [branch]
+```
+
+The script retries the connection (the internal server is sometimes briefly
+unreachable), fast-forwards the branch, and only forces a tag update when a
+release tag has moved. GitHub remains the primary remote, so an unreachable
+internal network never blocks a normal `git push`.
+
+Pulling changes made on GitLab back into the working copy uses the normal
+explicit remote:
+
+```sh
+git fetch gitlab
+git log --oneline HEAD..gitlab/main
+```
+
+Automating the mirror from the GitLab side (so no local push is needed) is
+possible with **Settings → Repository → Mirroring repositories**, which requires
+a GitLab tier that includes repository mirroring. If available, configure GitLab
+to *pull* from the public GitHub URL on a schedule.
 
 A GitLab CI equivalent (`.gitlab-ci.yml`) is kept for self-hosted runners.
 

@@ -12,6 +12,7 @@
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.test.mjs",
     "verify": "node scripts/verify.mjs",
+    "sync": "bash scripts/sync-gitlab.sh",
     "start": "node scripts/serve.mjs",
     "mac:setup": "node scripts/build.mjs && node scripts/mac-cert.mjs && node scripts/mac-sideload.mjs",
     "mac:cert": "node scripts/mac-cert.mjs",
