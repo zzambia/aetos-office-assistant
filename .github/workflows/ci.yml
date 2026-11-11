@@ -1,0 +1,114 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Test and build web assets
+        run: node scripts/verify.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: docs/automated-test-results.tap
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build web assets
+        run: npm run build
+      - name: Decode signing certificate (if configured)
+        shell: pwsh
+        env:
+          AETOS_SIGN_PFX_BASE64: ${{ secrets.AETOS_SIGN_PFX_BASE64 }}
+        run: |
+          if ($env:AETOS_SIGN_PFX_BASE64) {
+            $pfx = Join-Path $env:RUNNER_TEMP 'aetos.pfx'
+            [IO.File]::WriteAllBytes($pfx, [Convert]::FromBase64String($env:AETOS_SIGN_PFX_BASE64))
+            [IO.File]::AppendAllText($env:GITHUB_ENV, "AETOS_SIGN_PFX=$pfx`n")
+          }
+      - name: Build and sign launcher
+        shell: pwsh
+        run: ./desktop/build.ps1
+        env:
+          AETOS_SIGN_PASSWORD: ${{ secrets.AETOS_SIGN_PASSWORD }}
+          AETOS_SIGN_TIMESTAMP_URL: ${{ secrets.AETOS_SIGN_TIMESTAMP_URL }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: |
+            desktop/release/*.exe
+            desktop/release/aetos-web.zip
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install signing certificate (if configured)
+        env:
+          AETOS_MAC_CERT_P12_BASE64: ${{ secrets.AETOS_MAC_CERT_P12_BASE64 }}
+          AETOS_MAC_CERT_PASSWORD: ${{ secrets.AETOS_MAC_CERT_PASSWORD }}
+        run: |
+          if [ -n "$AETOS_MAC_CERT_P12_BASE64" ]; then
+            KEYCHAIN="$RUNNER_TEMP/aetos-build.keychain-db"
+            echo "$AETOS_MAC_CERT_P12_BASE64" | base64 --decode > "$RUNNER_TEMP/aetos.p12"
+            security create-keychain -p "" "$KEYCHAIN"
+            security set-keychain-settings -lut 21600 "$KEYCHAIN"
+            security unlock-keychain -p "" "$KEYCHAIN"
+            security import "$RUNNER_TEMP/aetos.p12" -k "$KEYCHAIN" -P "$AETOS_MAC_CERT_PASSWORD" -T /usr/bin/codesign
+            security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "" "$KEYCHAIN"
+            IDENTITY=$(security find-identity -v -p codesigning "$KEYCHAIN" | awk -F'"' '/Developer ID Application/{print $2; exit}')
+            echo "AETOS_MAC_IDENTITY=$IDENTITY" >> "$GITHUB_ENV"
+          fi
+      - name: Build and sign app
+        run: ./macos/build.sh
+        env:
+          AETOS_MAC_NOTARY_APPLE_ID: ${{ secrets.AETOS_MAC_NOTARY_APPLE_ID }}
+          AETOS_MAC_NOTARY_TEAM_ID: ${{ secrets.AETOS_MAC_NOTARY_TEAM_ID }}
+          AETOS_MAC_NOTARY_PASSWORD: ${{ secrets.AETOS_MAC_NOTARY_PASSWORD }}
+      - name: Self-test (routes)
+        run: |
+          "macos/build/AETOS Office Assistant.app/Contents/MacOS/AETOS-Office-Assistant" --self-test-routes "$RUNNER_TEMP/routes.txt"
+          cat "$RUNNER_TEMP/routes.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos
+          path: |
+            macos/build/*-macos.zip
+            macos/build/AETOS Office Assistant.app
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [build-windows, build-macos]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            artifacts/windows/*.exe \
+            artifacts/windows/aetos-web.zip \
+            artifacts/macos/*-macos.zip \
+            --generate-notes

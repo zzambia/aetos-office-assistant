@@ -4,6 +4,8 @@ Independent Microsoft Word task-pane add-in — a rewrite of the author's WordCr
 
 **Windows users:** the desktop launcher in `desktop/release/` embeds this web application and handles local setup, HTTPS, Word developer registration and optional startup at sign-in. No Node/npm commands are required to use it. Read `desktop/START_HERE.txt` for its preview status and installation steps. The bundled executable is the 0.2.9 Windows build; rebuild it on Windows with `desktop/build.ps1` for 0.2.10. The development commands below remain available for source builds and non-launcher hosting.
 
+**macOS users:** a native menu-bar launcher app is built with `macos/build.sh` (see "macOS app" below). It embeds the web application, serves it over trusted localhost HTTPS, sideloads the manifest into Word and can start at login — no Node/npm or terminal needed to use it. The app is an unsigned preview build; see [docs/CI.md](docs/CI.md) for signing and notarization.
+
 ## Build and test
 
 Use Node.js 22 or later. There are **no npm dependencies**, no package installation and no cloud build step. Runtime Office.js is loaded from Microsoft's official hosted URL.
@@ -14,6 +16,8 @@ npm run build
 ```
 
 The build copies browser ES modules to `dist/`, copies the supplied logo and its PNG icon sizes, and writes `dist/manifest.xml`. Sources are in `src/`; generated output is already included. Run commands from this directory. The build does not read documents or contact model providers.
+
+GitLab CI (`.gitlab-ci.yml`) builds the Windows launcher executable and the macOS `.app`/zip on `windows` and `macos` runners and runs the tests on a `linux` runner. Runner setup, signing and notarization notes are in [docs/CI.md](docs/CI.md).
 
 ## Run locally
 
@@ -30,6 +34,27 @@ npm run mac:doctor  # optional readiness check
 To keep the server in its own Terminal window instead of the current one, run `npm run mac:terminal`.
 
 Open Word once and quit it with Cmd+Q before `mac:setup`, so Word's sandbox container exists. The scripts create a certificate in `.certs/`, trust it in your login keychain, and copy the manifest to Word's `wef` folder. Sideloading into Word's container may require granting your terminal app Full Disk Access in System Settings; alternatively copy `dist/manifest.xml` to the `wef` folder in Finder. See [docs/MAC.md](docs/MAC.md) for details, ports, troubleshooting and the macOS host-test gaps.
+
+### macOS app (menu-bar launcher)
+
+`macos/build.sh` produces a native, self-contained `.app` (no Node/npm needed to run it) plus a distributable zip:
+
+```sh
+./macos/build.sh
+# macos/build/AETOS Office Assistant.app
+# macos/build/AETOS-Office-Assistant-0.2.10-macos.zip
+```
+
+The app embeds the built web application, serves it over trusted HTTPS on
+`https://localhost:38473`, sideloads the manifest into Word, and provides a menu
+bar item (Open Word, start at login, remove setup, quit). On first launch it
+creates/trusts a localhost certificate and registers the add-in; macOS may ask
+you to approve the keychain change, and sideloading may require Full Disk Access.
+The same origin/port, HTTPS routing and security headers as the Windows launcher
+are used. Run its route self-test with
+`macos/build/AETOS Office Assistant.app/Contents/MacOS/AETOS-Office-Assistant --self-test-routes /tmp/routes.txt`
+(or `--self-test` to also exercise the TLS listener). The app is an unsigned
+preview build; see [docs/CI.md](docs/CI.md).
 
 ### Windows and custom certificates
 
