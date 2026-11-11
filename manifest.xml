@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TaskPaneApp">
-  <Id>25c14ce2-eefd-49e1-b038-30215c41d834</Id><Version>0.2.9.0</Version><ProviderName>AETOS Office Assistant</ProviderName><DefaultLocale>en-US</DefaultLocale>
+  <Id>25c14ce2-eefd-49e1-b038-30215c41d834</Id><Version>0.2.10.0</Version><ProviderName>AETOS Office Assistant</ProviderName><DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="AETOS Office Assistant"/><Description DefaultValue="Draft, rewrite and summarize with your own model connections. Review every edit before applying it."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/><HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
   <SupportUrl DefaultValue="https://localhost:3000/help.html"/>
   <Hosts><Host Name="Document"/></Hosts><Requirements><Sets DefaultMinVersion="1.3"><Set Name="WordApi"/></Sets></Requirements>
-  <DefaultSettings><SourceLocation DefaultValue="https://localhost:3000/index.html?v=0.2.9"/></DefaultSettings><Permissions>ReadWriteDocument</Permissions>
+  <DefaultSettings><SourceLocation DefaultValue="https://localhost:3000/index.html?v=0.2.10"/></DefaultSettings><Permissions>ReadWriteDocument</Permissions>
 </OfficeApp>

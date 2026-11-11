@@ -1,8 +1,8 @@
 /* global Office */
-import { Connections, Session, SafeError, messages, bytes, suggestionLimit } from './core.js?v=0.2.9';
-import { generate } from './transport.js?v=0.2.9';
-import { WordHost } from './word.js?v=0.2.9';
-import { VERSION } from './version.js?v=0.2.9';
+import { Connections, Session, SafeError, messages, bytes, suggestionLimit } from './core.js?v=0.2.10';
+import { generate } from './transport.js?v=0.2.10';
+import { WordHost } from './word.js?v=0.2.10';
+import { VERSION } from './version.js?v=0.2.10';
 const $ = id => document.getElementById(id), session = new Session();
 function supportsRawDeflate() { try { new DecompressionStream('deflate-raw'); return true; } catch { return false; } }
 $('build-version').textContent = `v${VERSION}`;

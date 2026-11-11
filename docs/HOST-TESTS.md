@@ -2,6 +2,8 @@
 
 Product: AETOS Office Assistant 0.2.9. Report date: 19 October 2026.
 
+This report covers 0.2.9. 0.2.10 adds macOS setup tooling only; the host scenarios below remain unexecuted for 0.2.10.
+
 ## Actual results
 
 | Environment | Result |
