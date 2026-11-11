@@ -1,5 +1,8 @@
 # AETOS Office Assistant
 
+[![CI](https://github.com/zzambia/aetos-office-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/zzambia/aetos-office-assistant/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/zzambia/aetos-office-assistant)](https://github.com/zzambia/aetos-office-assistant/releases)
+
 Independent Microsoft Word task-pane add-in — a rewrite of the author's WordCraft plugin, based on the Writing Assistant PRD dated 19 October 2026. Version 0.2.10 is an implementation preview, **not a declaration of verified WordCraft feature parity**. The source, built application, sideloadable XML manifest, automated tests and explicit parity/host-test checklists are included.
 
 **Windows users:** download the prebuilt launcher from the latest GitHub Release (or the Actions artifacts), or build it yourself on Windows with `desktop/build.ps1`. The launcher embeds this web application and handles local setup, HTTPS, Word developer registration and optional startup at sign-in — no Node/npm commands are required to use it. Read `desktop/START_HERE.txt` for its preview status and installation steps. The development commands below remain available for source builds and non-launcher hosting.
