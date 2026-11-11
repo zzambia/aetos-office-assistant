@@ -133,5 +133,3 @@ Apache-2.0 lets you use, modify and redistribute the code, including commerciall
 **Trademarks.** AETOS Office Assistant is a product realised and developed by [YOUBIQUO S.r.l.](https://www.youbiquo.eu) · [www.youbiquo.eu](https://www.youbiquo.eu) · [www.aetos-ai.it](https://www.aetos-ai.it). The AETOS and YOUBIQUO names and logos are **not** covered by the Apache License and remain the property of their respective owners; they are included only to identify this project. Redistributions of modified versions must replace them.
 
 **Third-party components.** No third-party libraries are bundled and there are no npm dependencies. Office.js is not distributed with this project; it is loaded at runtime from Microsoft's CDN and remains subject to Microsoft's terms. No WordCraft code or Microsoft visual assets are included.
-
-**Logo sources.** The AETOS mark is taken from https://www.aetos-ai.it/assets/img/aetos/aetos_logo_short.svg and retained as `logo.svg`; `desktop/render-logo.ps1` produces the raster sizes without changing the artwork. The YOUBIQUO mark is taken from https://www.aetos-ai.it/assets/img/aetos/youbiquo-logo-y.svg and stored in `docs/logos/`.
