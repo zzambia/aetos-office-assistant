@@ -133,6 +133,31 @@ possible with **Settings → Repository → Mirroring repositories**, which requ
 a GitLab tier that includes repository mirroring. If available, configure GitLab
 to *pull* from the public GitHub URL on a schedule.
 
+### Scheduled mirror on macOS (launchd)
+
+```sh
+npm run sync:install     # every 900s; AETOS_SYNC_INTERVAL=3600 to change
+npm run sync:status
+npm run sync:remove
+```
+
+This installs the LaunchAgent `com.aetos.office-assistant.sync`. It mirrors
+`origin/main` rather than your working copy, so it also picks up commits made
+through the GitHub web interface, and it runs whether or not the repository is
+open. Output is appended to `~/Library/Logs/aetos-sync.log`.
+
+```sh
+launchctl kickstart -k "gui/$(id -u)/com.aetos.office-assistant.sync"   # run now
+tail -f ~/Library/Logs/aetos-sync.log
+```
+
+The script needs no interactive input: the GitLab SSH key has no passphrase and
+GitHub HTTPS uses the `osxkeychain` credential helper. If you change either, rerun
+the sync by hand first to confirm it still works unattended.
+
+On Linux, use `scripts/sync-gitlab.sh` from cron or a systemd timer; the
+`--from` behaviour is the same via `AETOS_SYNC_FROM=origin`.
+
 A GitLab CI equivalent (`.gitlab-ci.yml`) is kept for self-hosted runners.
 
 ## Repository layout

@@ -7,12 +7,17 @@
 # blocks normal pushes.
 #
 # Usage:
-#   scripts/sync-gitlab.sh [branch]      # default branch: current branch
+#   scripts/sync-gitlab.sh [branch]            # push the local branch
+#   AETOS_SYNC_FROM=origin scripts/sync-gitlab.sh main
+#                                             # mirror GitHub's branch instead
 #   AETOS_SYNC_REMOTE=gitlab scripts/sync-gitlab.sh
+#
+# Exit codes: 0 synced (or already up to date), 1 failure.
 set -euo pipefail
 
 remote="${AETOS_SYNC_REMOTE:-gitlab}"
 branch="${1:-$(git symbolic-ref --quiet --short HEAD || echo main)}"
+source_remote="${AETOS_SYNC_FROM:-}"
 attempts="${AETOS_SYNC_ATTEMPTS:-3}"
 
 if ! git remote get-url "$remote" >/dev/null 2>&1; then
@@ -21,7 +26,11 @@ if ! git remote get-url "$remote" >/dev/null 2>&1; then
   exit 1
 fi
 
-echo "Mirroring $branch and tags to '$remote'"
+if [ -n "$source_remote" ]; then
+  echo "Mirroring $source_remote/$branch -> $remote/$branch"
+else
+  echo "Mirroring $branch -> $remote/$branch"
+fi
 
 # The internal server is sometimes briefly unreachable. Retry before failing.
 for attempt in $(seq 1 "$attempts"); do
@@ -36,7 +45,16 @@ for attempt in $(seq 1 "$attempts"); do
   sleep 5
 done
 
-git push "$remote" "$branch"
+# When mirroring a remote, take the branch and tags from it rather than from a
+# possibly stale or dirty working copy.
+if [ -n "$source_remote" ]; then
+  git fetch --prune --tags "$source_remote" "+refs/heads/$branch:refs/remotes/$source_remote/$branch"
+  push_ref="$source_remote/$branch"
+else
+  push_ref="$branch"
+fi
+
+git push "$remote" "$push_ref:refs/heads/$branch"
 
 # Branches fast-forward, but a moved release tag does not. Retry with --force
 # only when the plain push is rejected; the remote is a read-only mirror.
@@ -45,4 +63,4 @@ if ! git push "$remote" --tags 2>/dev/null; then
   git push "$remote" --tags --force
 fi
 
-echo "Done: '$remote' now matches $branch and the local tags."
+echo "Done: '$remote' matches ${push_ref} and the local tags."
