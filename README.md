@@ -9,6 +9,17 @@ Independent Microsoft Word task-pane add-in — a rewrite of the author's WordCr
 
 **macOS users:** a native menu-bar launcher app is built with `macos/build.sh` (see "macOS app" below). It embeds the web application, serves it over trusted localhost HTTPS, sideloads the manifest into Word and can start at login — no Node/npm or terminal needed to use it. The app is an unsigned preview build; see [docs/CI.md](docs/CI.md) for signing and notarization.
 
+## Screenshots
+
+<table>
+<tr>
+<td width="50%" align="center"><img src="docs/screenshots/writing-panel.png" width="360" alt="Task pane: writing mode, instructions, suggestion preview and apply actions"><br><sub><b>Task pane</b> — choose a mode, give instructions, review the suggestion, then insert or replace.</sub></td>
+<td width="50%" align="center"><img src="docs/screenshots/model-connection.png" width="360" alt="Model connection settings: connection name, endpoint, model identifier and API key"><br><sub><b>Model connection</b> — save your own endpoint, model identifier and optional API key.</sub></td>
+</tr>
+</table>
+
+These images are captures of the built task pane with sample content, not output from a live model, and the status line shows the text Word displays. Host verification in real Word is still pending; see [docs/PARITY.md](docs/PARITY.md) and [docs/HOST-TESTS.md](docs/HOST-TESTS.md).
+
 ## Build and test
 
 Use Node.js 22 or later. There are **no npm dependencies**, no package installation and no cloud build step. Runtime Office.js is loaded from Microsoft's official hosted URL.
