@@ -3,9 +3,17 @@
 [![CI](https://github.com/zzambia/aetos-office-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/zzambia/aetos-office-assistant/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/zzambia/aetos-office-assistant)](https://github.com/zzambia/aetos-office-assistant/releases)
 
+<p>
+  <a href="https://www.aetos-ai.it" title="AETOS"><img src="docs/logos/aetos-logo.png" height="46" alt="AETOS"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.youbiquo.eu" title="YOUBIQUO"><img src="docs/logos/youbiquo-logo.png" height="40" alt="YOUBIQUO"></a>
+</p>
+
 AETOS Office Assistant is a writing assistant that lives inside **Microsoft Word**, in the task pane beside your document. You give it an instruction, it proposes a draft, a rewrite or a summary, and **you decide whether to apply it**. Nothing is inserted into your document until you review the suggestion and click a button.
 
 It works with the model of your choice. You connect your own endpoint and model identifier — there is no AETOS account, no subscription and no server in the middle.
+
+AETOS Office Assistant is a product realised and developed by [YOUBIQUO S.r.l.](https://www.youbiquo.eu) · [www.youbiquo.eu](https://www.youbiquo.eu) · Product website: [www.aetos-ai.it](https://www.aetos-ai.it)
 
 ## Screenshots
 
@@ -115,4 +123,8 @@ Please read [docs/PARITY.md](docs/PARITY.md) and [docs/HOST-TESTS.md](docs/HOST-
 
 The add-in has no analytics, no telemetry and no backend. Model credentials are stored unencrypted in the browser's local storage on your machine and are never written into Word documents. Office.js is loaded from Microsoft's official CDN at runtime.
 
-No WordCraft code or Microsoft visual assets are included. The logo was supplied by the user from https://www.aetos-ai.it/images/aetos_logo_short.svg and is bundled locally; `desktop/render-logo.ps1` produces the raster sizes without changing the artwork.
+No WordCraft code or Microsoft visual assets are included.
+
+**Trademarks.** AETOS Office Assistant is a product realised and developed by [YOUBIQUO S.r.l.](https://www.youbiquo.eu) · [www.youbiquo.eu](https://www.youbiquo.eu) · [www.aetos-ai.it](https://www.aetos-ai.it). The AETOS and YOUBIQUO names and logos are the property of their respective owners and are used here only to identify this project.
+
+**Logo sources.** The AETOS mark is taken from https://www.aetos-ai.it/assets/img/aetos/aetos_logo_short.svg and retained as `logo.svg`; `desktop/render-logo.ps1` produces the raster sizes without changing the artwork. The YOUBIQUO mark is taken from https://www.aetos-ai.it/assets/img/aetos/youbiquo-logo-y.svg and stored in `docs/logos/`.
