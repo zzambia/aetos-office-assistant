@@ -13,7 +13,9 @@ AETOS Office Assistant is a writing assistant that lives inside **Microsoft Word
 
 It works with the model of your choice. You connect your own endpoint and model identifier — there is no AETOS account, no subscription and no server in the middle.
 
-AETOS Office Assistant is a product realised and developed by [YOUBIQUO S.r.l.](https://www.youbiquo.eu) · [www.youbiquo.eu](https://www.youbiquo.eu) · Product website: [www.aetos-ai.it](https://www.aetos-ai.it)
+AETOS Office Assistant is a product realised and developed by [YOUBIQUO S.r.l.](https://www.youbiquo.eu) · [www.youbiquo.eu](https://www.youbiquo.eu)
+
+Product website: [www.aetos-ai.it](https://www.aetos-ai.it)
 
 ## Screenshots
 
