@@ -2,7 +2,7 @@
 
 Independent Microsoft Word task-pane add-in — a rewrite of the author's WordCraft plugin, based on the Writing Assistant PRD dated 19 October 2026. Version 0.2.9 is an implementation preview, **not a declaration of verified WordCraft feature parity**. The source, built application, sideloadable XML manifest, automated tests and explicit parity/host-test checklists are included.
 
-**Windows users:** the new desktop launcher in `desktop/release/AETOS-Office-Assistant.exe` embeds this web application and handles local setup, HTTPS, Word developer registration and optional startup at sign-in. No Node/npm commands are required to use it. Read `desktop/START_HERE.txt` for its preview status and installation steps. The development commands below remain available for source builds and non-launcher hosting.
+**Windows users:** the desktop launcher in `desktop/release/` embeds this web application and handles local setup, HTTPS, Word developer registration and optional startup at sign-in. No Node/npm commands are required to use it. Read `desktop/START_HERE.txt` for its preview status and installation steps. The development commands below remain available for source builds and non-launcher hosting.
 
 ## Build and test
 
@@ -17,7 +17,23 @@ The build copies browser ES modules to `dist/`, copies the supplied logo and its
 
 ## Run locally
 
-An Office add-in needs an HTTPS origin trusted by the Word browser engine. Obtain a development certificate for localhost using your organization's certificate process or Microsoft's Office add-in development tooling. Certificate creation/trust is deliberately not automated by this package. Do not disable browser or Office security checks.
+An Office add-in needs an HTTPS origin trusted by the Word browser engine. Do not disable browser or Office security checks.
+
+### macOS quick start
+
+```sh
+npm run mac:setup   # build, create/trust a localhost certificate, sideload into Word
+npm start           # keep this running while Word uses the add-in
+npm run mac:doctor  # optional readiness check
+```
+
+To keep the server in its own Terminal window instead of the current one, run `npm run mac:terminal`.
+
+Open Word once and quit it with Cmd+Q before `mac:setup`, so Word's sandbox container exists. The scripts create a certificate in `.certs/`, trust it in your login keychain, and copy the manifest to Word's `wef` folder. Sideloading into Word's container may require granting your terminal app Full Disk Access in System Settings; alternatively copy `dist/manifest.xml` to the `wef` folder in Finder. See [docs/MAC.md](docs/MAC.md) for details, ports, troubleshooting and the macOS host-test gaps.
+
+### Windows and custom certificates
+
+Obtain a development certificate for localhost using your organization's certificate process or Microsoft's Office add-in development tooling. Certificate creation/trust is deliberately not automated for Windows by this package. Do not disable browser or Office security checks.
 
 PowerShell:
 
@@ -28,7 +44,7 @@ npm run build
 npm start
 ```
 
-macOS shell:
+Manual certificate on macOS or other platforms:
 
 ```sh
 export AETOS_TLS_CERT=/path/localhost-cert.pem
@@ -44,7 +60,7 @@ Open `https://localhost:3000/help.html` to check that your browser trusts the ce
 Use `dist/manifest.xml`, not the source manifest when building for a different origin. The add-in is named **AETOS Office Assistant** and opens from Word's Add-ins list. The initial release uses the standard task-pane launcher; it has no custom ribbon tab.
 
 - **Windows:** use an Office trusted shared-folder catalog containing `dist/manifest.xml`, or your organization's add-in deployment mechanism. After the catalog is configured and Word restarted, choose the add-in from the Shared Folder section of My Add-ins. Follow Microsoft's current instructions linked below; changing trust settings is a user/admin step.
-- **macOS:** sideload the manifest into Word's `wef` folder as described in Microsoft's guide, then open the add-in from Word. Word must trust the HTTPS certificate.
+- **macOS:** sideload the manifest into Word's `wef` folder with `npm run mac:sideload` (or manually, as described in Microsoft's guide), then open the add-in from Word. Word must trust the HTTPS certificate; `npm run mac:cert` creates and trusts one. See [docs/MAC.md](docs/MAC.md).
 - **Web:** open a test DOCX in Word for the web and upload the manifest through the Office Add-ins upload command, where permitted by your tenant. The add-in origin must be reachable by that browser. Some tenants prohibit sideloading.
 
 For deployment to your own static HTTPS hosting, set `AETOS_ORIGIN` to its origin before `npm run build` (for example `https://assistant.example.org`). Publish the contents of `dist/` at that origin's root and distribute its generated manifest. Serve `.js` as `text/javascript`, retain a restrictive CSP equivalent to `scripts/serve.mjs`, and do not add telemetry, a proxy, or third-party scripts. HTTPS hosting has **not** been provisioned or published by this task.
@@ -83,7 +99,7 @@ Local integrity checks export the current DOCX in memory. Document contents, sty
 
 The API floor is WordApi 1.3 (Microsoft documents Windows version 1612/build 7668.1000, Mac 15.32, and Word on the web for that requirement set). **Those historical versions are not supported by this build**: the add-in also requires a modern engine with ES modules, fetch streaming, Web Crypto and `DecompressionStream('deflate-raw')`. Target current Microsoft 365 Word on Windows with WebView2, current Microsoft 365 Word on macOS, and current Word for the web in a modern browser. An exact minimum tested Word/browser build is **not yet established**. Unsupported export or browser capabilities fail closed.
 
-Read [docs/PARITY.md](docs/PARITY.md) and [docs/HOST-TESTS.md](docs/HOST-TESTS.md) before using this preview on important documents.
+Read [docs/PARITY.md](docs/PARITY.md) and [docs/HOST-TESTS.md](docs/HOST-TESTS.md) before using this preview on important documents. macOS setup and host-specific limits are in [docs/MAC.md](docs/MAC.md).
 
 ## Synthetic endpoint for host testing
 

@@ -4,6 +4,7 @@ import { generate } from './transport.js?v=0.2.9';
 import { WordHost } from './word.js?v=0.2.9';
 import { VERSION } from './version.js?v=0.2.9';
 const $ = id => document.getElementById(id), session = new Session();
+function supportsRawDeflate() { try { new DecompressionStream('deflate-raw'); return true; } catch { return false; } }
 $('build-version').textContent = `v${VERSION}`;
 let connections, host, controller, preparing = false, applying = false, monitoring = false, ready = false, monitorPromise = Promise.resolve();
 const status = (message, error = false) => { $('status').textContent = message; $('status').classList.toggle('error', error); };
@@ -108,7 +109,7 @@ async function boot() {
     connections = new Connections(localStorage); renderConnections(); controls();
     if (!window.Office) { status('Open this add-in in Microsoft Word to generate and apply suggestions. Connection settings are available here.', true); return; }
     const info = await Office.onReady();
-    if (info.host !== Office.HostType.Word || !Office.context.requirements.isSetSupported('WordApi', '1.3') || !window.DecompressionStream) throw new SafeError('This add-in requires WordApi 1.3 and a modern browser engine with decompression support.');
+    if (info.host !== Office.HostType.Word || !Office.context.requirements.isSetSupported('WordApi', '1.3') || !supportsRawDeflate() || !globalThis.crypto?.subtle) throw new SafeError('This add-in requires WordApi 1.3 and a modern WebView with raw-deflate decompression and Web Crypto. Update Word and macOS/Windows, then reopen the add-in.');
     host = new WordHost(); ready = true; controls(); status('Ready. Place the cursor or select text in Word.');
     setInterval(() => { if (!monitoring) monitorPromise = monitor(); }, 3000);
   } catch (e) { report(e); $('settings-open').disabled = !connections; }

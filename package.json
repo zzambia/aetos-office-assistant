@@ -7,6 +7,11 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.test.mjs",
-    "start": "node scripts/serve.mjs"
+    "start": "node scripts/serve.mjs",
+    "mac:setup": "node scripts/build.mjs && node scripts/mac-cert.mjs && node scripts/mac-sideload.mjs",
+    "mac:cert": "node scripts/mac-cert.mjs",
+    "mac:sideload": "node scripts/mac-sideload.mjs",
+    "mac:doctor": "node scripts/mac-doctor.mjs",
+    "mac:terminal": "open -a Terminal scripts/mac-start.command"
   }
 }
