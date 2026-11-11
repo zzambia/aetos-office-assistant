@@ -27,8 +27,6 @@ Product website: [www.aetos-ai.it](https://www.aetos-ai.it)
 </tr>
 </table>
 
-These images are captures of the built task pane with sample content, not output from a live model, and the status line shows the text Word displays. Host verification in real Word is still pending; see [docs/PARITY.md](docs/PARITY.md) and [docs/HOST-TESTS.md](docs/HOST-TESTS.md).
-
 ## What does it do?
 
 Pick one of three modes:
