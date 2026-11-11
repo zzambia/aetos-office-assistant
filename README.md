@@ -17,7 +17,7 @@ npm run build
 
 The build copies browser ES modules to `dist/`, copies the supplied logo and its PNG icon sizes, and writes `dist/manifest.xml`. Sources are in `src/`; generated output is already included. Run commands from this directory. The build does not read documents or contact model providers.
 
-GitLab CI (`.gitlab-ci.yml`) builds the Windows launcher executable and the macOS `.app`/zip on `windows` and `macos` runners and runs the tests on a `linux` runner. Runner setup, signing and notarization notes are in [docs/CI.md](docs/CI.md).
+GitHub Actions (`.github/workflows/ci.yml`) builds the Windows launcher executable and the macOS `.app`/zip on hosted `windows-latest`/`macos-latest` runners, runs the tests on `ubuntu-latest`, and publishes a GitHub Release when a `v*` tag is pushed. Signing and notarization secrets are documented in [docs/CI.md](docs/CI.md).
 
 ## Run locally
 
