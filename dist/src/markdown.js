@@ -1,4 +1,4 @@
-import { SafeError, suggestionLimit, LIMIT } from './core.js?v=0.2.10';
+import { SafeError, suggestionLimit, LIMIT } from './core.js?v=0.2.11';
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
 const W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main';
 const REL = 'http://schemas.openxmlformats.org/package/2006/relationships';

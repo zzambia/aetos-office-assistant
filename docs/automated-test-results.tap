@@ -2,338 +2,338 @@ TAP version 13
 # Subtest: endpoint policy: hosted HTTPS, loopback only HTTP, no credential/query/fragment URLs
 ok 1 - endpoint policy: hosted HTTPS, loopback only HTTP, no credential/query/fragment URLs
   ---
-  duration_ms: 0.778666
+  duration_ms: 0.814375
   type: 'test'
   ...
 # Subtest: connections persist, retain/clear keys, do not conflate endpoint, default removal and limit
 ok 2 - connections persist, retain/clear keys, do not conflate endpoint, default removal and limit
   ---
-  duration_ms: 0.476333
+  duration_ms: 0.50725
   type: 'test'
   ...
 # Subtest: storage failure leaves settings unchanged
 ok 3 - storage failure leaves settings unchanged
   ---
-  duration_ms: 0.137583
+  duration_ms: 0.142375
   type: 'test'
   ...
 # Subtest: mode validation, source isolation and minimal request context
 ok 4 - mode validation, source isolation and minimal request context
   ---
-  duration_ms: 0.328958
+  duration_ms: 0.334291
   type: 'test'
   ...
 # Subtest: UTF-8 byte and paragraph boundaries
 ok 5 - UTF-8 byte and paragraph boundaries
   ---
-  duration_ms: 0.674375
+  duration_ms: 0.657
   type: 'test'
   ...
 # Subtest: discard and failure never accept late output; duplicate active requests refused
 ok 6 - discard and failure never accept late output; duplicate active requests refused
   ---
-  duration_ms: 0.079667
+  duration_ms: 0.078583
   type: 'test'
   ...
 # Subtest: freshness distinguishes identical text and empty positions by range relation
 ok 7 - freshness distinguishes identical text and empty positions by range relation
   ---
-  duration_ms: 0.118958
+  duration_ms: 0.117833
   type: 'test'
   ...
 # Subtest: selection validation permits ordinary cell text, rejects objects and table boundaries
 ok 8 - selection validation permits ordinary cell text, rejects objects and table boundaries
   ---
-  duration_ms: 0.657667
+  duration_ms: 0.67475
   type: 'test'
   ...
 # Subtest: selection checks ignore tables and objects in supporting Flat OPC parts
 ok 9 - selection checks ignore tables and objects in supporting Flat OPC parts
   ---
-  duration_ms: 0.244458
+  duration_ms: 0.252459
   type: 'test'
   ...
 # Subtest: fingerprint ignores ZIP compression/timestamps and volatile document metadata
 ok 10 - fingerprint ignores ZIP compression/timestamps and volatile document metadata
   ---
-  duration_ms: 13.553667
+  duration_ms: 13.106959
   type: 'test'
   ...
 # Subtest: freshness detects edits in body, headers, footers and styles
 ok 11 - freshness detects edits in body, headers, footers and styles
   ---
-  duration_ms: 1.465375
+  duration_ms: 1.551083
   type: 'test'
   ...
 # Subtest: malformed and non-Word ZIP files fail closed
 ok 12 - malformed and non-Word ZIP files fail closed
   ---
-  duration_ms: 0.441667
+  duration_ms: 0.404
   type: 'test'
   ...
 # Subtest: required Markdown types become native Word structures
 ok 13 - required Markdown types become native Word structures
   ---
-  duration_ms: 1.514
+  duration_ms: 1.574083
   type: 'test'
   ...
 # Subtest: active HTML and dangerous links remain inert, URLs are XML escaped
 ok 14 - active HTML and dangerous links remain inert, URLs are XML escaped
   ---
-  duration_ms: 0.119334
+  duration_ms: 0.124709
   type: 'test'
   ...
 # Subtest: explicit boundaries add native paragraphs and malformed tables fail before mutation
 ok 15 - explicit boundaries add native paragraphs and malformed tables fail before mutation
   ---
-  duration_ms: 0.187833
+  duration_ms: 0.198167
   type: 'test'
   ...
 # Subtest: paragraph and control-character limits apply to rendered results
 ok 16 - paragraph and control-character limits apply to rendered results
   ---
-  duration_ms: 5.4335
+  duration_ms: 5.902458
   type: 'test'
   ...
 # Subtest: SSE tolerates split UTF-8 and CRLF chunks, previews incrementally
 ok 17 - SSE tolerates split UTF-8 and CRLF chunks, previews incrementally
   ---
-  duration_ms: 10.652584
+  duration_ms: 10.5085
   type: 'test'
   ...
 # Subtest: JSON fallback accepts only completed text and request payload is minimal
 ok 18 - JSON fallback accepts only completed text and request payload is minimal
   ---
-  duration_ms: 0.422833
+  duration_ms: 0.401791
   type: 'test'
   ...
 # Subtest: reject incomplete, filtered, malformed, empty, tool, and post-DONE streams
     # Subtest: data: {"choices":[{"index":0,"delta
     ok 1 - data: {"choices":[{"index":0,"delta
       ---
-      duration_ms: 0.397083
+      duration_ms: 0.361709
       type: 'test'
       ...
     # Subtest: data: {"choices":[{"index":0,"delta
     ok 2 - data: {"choices":[{"index":0,"delta
       ---
-      duration_ms: 0.279917
+      duration_ms: 0.254292
       type: 'test'
       ...
     # Subtest: data: {"choices":[{"index":0,"delta
     ok 3 - data: {"choices":[{"index":0,"delta
       ---
-      duration_ms: 0.897916
+      duration_ms: 0.693125
       type: 'test'
       ...
     # Subtest: data: {"choices":[{"index":0,"delta
     ok 4 - data: {"choices":[{"index":0,"delta
       ---
-      duration_ms: 0.242334
+      duration_ms: 0.279542
       type: 'test'
       ...
     # Subtest: data: bad\\n\\n
     ok 5 - data: bad\\n\\n
       ---
-      duration_ms: 0.126834
+      duration_ms: 0.160042
       type: 'test'
       ...
     # Subtest: data: {"choices":[{"index":0,"delta
     ok 6 - data: {"choices":[{"index":0,"delta
       ---
-      duration_ms: 0.262875
+      duration_ms: 0.3715
       type: 'test'
       ...
     # Subtest: data: {"choices":[{"index":0,"delta
     ok 7 - data: {"choices":[{"index":0,"delta
       ---
-      duration_ms: 0.238041
+      duration_ms: 0.2475
       type: 'test'
       ...
     # Subtest: data: {"choices":[{"index":0,"delta
     ok 8 - data: {"choices":[{"index":0,"delta
       ---
-      duration_ms: 0.221875
+      duration_ms: 0.231125
       type: 'test'
       ...
     1..8
 ok 19 - reject incomplete, filtered, malformed, empty, tool, and post-DONE streams
   ---
-  duration_ms: 3.054292
+  duration_ms: 3.021125
   type: 'test'
   ...
 # Subtest: partial output survives a failed stream callback
 ok 20 - partial output survives a failed stream callback
   ---
-  duration_ms: 0.227
+  duration_ms: 0.249125
   type: 'test'
   ...
 # Subtest: response size and output size limits are enforced
 ok 21 - response size and output size limits are enforced
   ---
-  duration_ms: 2.36975
+  duration_ms: 2.313542
   type: 'test'
   ...
 # Subtest: provider bodies and network errors cannot expose secrets
 ok 22 - provider bodies and network errors cannot expose secrets
   ---
-  duration_ms: 0.24975
+  duration_ms: 0.290041
   type: 'test'
   ...
 # Subtest: timeout and explicit cancellation abort requests
 ok 23 - timeout and explicit cancellation abort requests
   ---
-  duration_ms: 5.157209
+  duration_ms: 4.915084
   type: 'test'
   ...
 # Subtest: JSON refusal, truncation, missing content and redirects are rejected
 ok 24 - JSON refusal, truncation, missing content and redirects are rejected
   ---
-  duration_ms: 0.629209
+  duration_ms: 0.558167
   type: 'test'
   ...
 # Subtest: Word adapter does not mutate during prepare, applies with one insertion call
 ok 25 - Word adapter does not mutate during prepare, applies with one insertion call
   ---
-  duration_ms: 5.085209
+  duration_ms: 4.853667
   type: 'test'
   ...
 # Subtest: Word adapter rejects changed content and mismatched location without mutation
 ok 26 - Word adapter rejects changed content and mismatched location without mutation
   ---
-  duration_ms: 1.719083
+  duration_ms: 1.315041
   type: 'test'
   ...
 # Subtest: Word adapter rejects document switches and invalid Markdown before mutation
 ok 27 - Word adapter rejects document switches and invalid Markdown before mutation
   ---
-  duration_ms: 0.693625
+  duration_ms: 0.575167
   type: 'test'
   ...
 # Subtest: host refusal is sanitized and marked uncertain to prevent duplicate acceptance
 ok 28 - host refusal is sanitized and marked uncertain to prevent duplicate acceptance
   ---
-  duration_ms: 0.837625
+  duration_ms: 0.666291
   type: 'test'
   ...
 # Subtest: prepare and accept tolerate fresh export revision-session IDs but still reject text edits
 ok 29 - prepare and accept tolerate fresh export revision-session IDs but still reject text edits
   ---
-  duration_ms: 1.175875
+  duration_ms: 1.173541
   type: 'test'
   ...
 # Subtest: cursor and all plain text within a cell are accepted; crossing its boundary is refused
 ok 30 - cursor and all plain text within a cell are accepted; crossing its boundary is refused
   ---
-  duration_ms: 1.227458
+  duration_ms: 1.20675
   type: 'test'
   ...
 # Subtest: unstable package permits preview but never application, and exposes no text in diagnostic
 ok 31 - unstable package permits preview but never application, and exposes no text in diagnostic
   ---
-  duration_ms: 0.938041
+  duration_ms: 0.753875
   type: 'test'
   ...
 # Subtest: unstable package still refuses changed selected text during preparation
 ok 32 - unstable package still refuses changed selected text during preparation
   ---
-  duration_ms: 0.45375
+  duration_ms: 0.47275
   type: 'test'
   ...
 # Subtest: XML syntax/prefix/attribute-order differences are not content changes
 ok 33 - XML syntax/prefix/attribute-order differences are not content changes
   ---
-  duration_ms: 5.947541
+  duration_ms: 5.6285
   type: 'test'
   ...
 # Subtest: revision session, proofing and cached pagination do not invalidate writing
 ok 34 - revision session, proofing and cached pagination do not invalidate writing
   ---
-  duration_ms: 0.166083
+  duration_ms: 0.120167
   type: 'test'
   ...
 # Subtest: volatile settings ignored; protection/tracking/layout settings preserved
 ok 35 - volatile settings ignored; protection/tracking/layout settings preserved
   ---
-  duration_ms: 0.979167
+  duration_ms: 0.515834
   type: 'test'
   ...
 # Subtest: only the internal GoBack bookmark is omitted; user bookmarks retained
 ok 36 - only the internal GoBack bookmark is omitted; user bookmarks retained
   ---
-  duration_ms: 0.267708
+  duration_ms: 0.094125
   type: 'test'
   ...
 # Subtest: text, significant spaces, paragraph structure, formatting and revisions remain protected
 ok 37 - text, significant spaces, paragraph structure, formatting and revisions remain protected
   ---
-  duration_ms: 0.408208
+  duration_ms: 0.137208
   type: 'test'
   ...
 # Subtest: DTD, unknown entities, malformed XML and unbound prefixes fail closed
 ok 38 - DTD, unknown entities, malformed XML and unbound prefixes fail closed
   ---
-  duration_ms: 0.360583
+  duration_ms: 0.199458
   type: 'test'
   ...
 # Subtest: ZIP normalization tolerates harmless export churn and diagnostics reveal categories only
 ok 39 - ZIP normalization tolerates harmless export churn and diagnostics reveal categories only
   ---
-  duration_ms: 7.427333
+  duration_ms: 7.064958
   type: 'test'
   ...
 # Subtest: add-in state addition, removal and changes do not invalidate the document through package references
 ok 40 - add-in state addition, removal and changes do not invalidate the document through package references
   ---
-  duration_ms: 3.091167
+  duration_ms: 3.109083
   type: 'test'
   ...
 # Subtest: relationship order is irrelevant but hyperlink and image targets remain protected
 ok 41 - relationship order is irrelevant but hyperlink and image targets remain protected
   ---
-  duration_ms: 0.740792
+  duration_ms: 0.880167
   type: 'test'
   ...
 # Subtest: comments, custom XML, media and unknown parts are still checked
 ok 42 - comments, custom XML, media and unknown parts are still checked
   ---
-  duration_ms: 0.794584
+  duration_ms: 0.482917
   type: 'test'
   ...
 # Subtest: metadata is recognized by content type outside the conventional folder; unused thumbnail defaults are ignored
 ok 43 - metadata is recognized by content type outside the conventional folder; unused thumbnail defaults are ignored
   ---
-  duration_ms: 0.707166
+  duration_ms: 0.937084
   type: 'test'
   ...
 # Subtest: root and mixed-case add-in metadata directories and their references are excluded consistently
 ok 44 - root and mixed-case add-in metadata directories and their references are excluded consistently
   ---
-  duration_ms: 0.733958
+  duration_ms: 0.604542
   type: 'test'
   ...
 # Subtest: root relationship renumbering is harmless; retargeting the document is not
 ok 45 - root relationship renumbering is harmless; retargeting the document is not
   ---
-  duration_ms: 0.481417
+  duration_ms: 0.45675
   type: 'test'
   ...
 # Subtest: diagnostics identify standard parts and omit content, attributes, custom names and hashes
 ok 46 - diagnostics identify standard parts and omit content, attributes, custom names and hashes
   ---
-  duration_ms: 0.863
+  duration_ms: 0.737166
   type: 'test'
   ...
 # Subtest: note paragraph identity churn is ignored while note text, formatting and reference IDs are preserved
 ok 47 - note paragraph identity churn is ignored while note text, formatting and reference IDs are preserved
   ---
-  duration_ms: 1.493083
+  duration_ms: 1.463708
   type: 'test'
   ...
 # Subtest: diagnostics name changed standard attributes without their values
 ok 48 - diagnostics name changed standard attributes without their values
   ---
-  duration_ms: 0.35175
+  duration_ms: 0.26175
   type: 'test'
   ...
 1..48
@@ -344,4 +344,4 @@ ok 48 - diagnostics name changed standard attributes without their values
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 59.631334
+# duration_ms 58.658958

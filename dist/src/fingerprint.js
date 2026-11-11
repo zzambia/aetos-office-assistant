@@ -1,5 +1,5 @@
-import { SafeError } from './core.js?v=0.2.10';
-import { canonicalXml, ignoredPart, parseXml } from './xml-fingerprint.js?v=0.2.10';
+import { SafeError } from './core.js?v=0.2.11';
+import { canonicalXml, ignoredPart, parseXml } from './xml-fingerprint.js?v=0.2.11';
 // Hash uncompressed OPC parts, not ZIP timestamps or compression metadata.
 // Exclude volatile descriptive metadata only; retain all document content parts.
 export async function fingerprint(zip, diagnosticParts = null) {

@@ -1,4 +1,4 @@
-import { SafeError } from './core.js?v=0.2.10';
+import { SafeError } from './core.js?v=0.2.11';
 
 const W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main';
 const WS = 'http://purl.oclc.org/ooxml/wordprocessingml/main';

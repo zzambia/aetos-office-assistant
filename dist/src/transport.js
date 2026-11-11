@@ -1,4 +1,4 @@
-import { endpoint, LIMIT, SafeError, suggestionLimit } from './core.js?v=0.2.10';
+import { endpoint, LIMIT, SafeError, suggestionLimit } from './core.js?v=0.2.11';
 
 // SSE is framed by blank lines, independently of HTTP chunk boundaries.
 export class SSE {
