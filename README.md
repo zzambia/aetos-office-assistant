@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/zzambia/aetos-office-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/zzambia/aetos-office-assistant/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/zzambia/aetos-office-assistant)](https://github.com/zzambia/aetos-office-assistant/releases)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
 <p>
   <a href="https://www.aetos-ai.it" title="AETOS"><img src="docs/logos/aetos-logo.png" height="46" alt="AETOS"></a>
@@ -121,12 +122,18 @@ Please read [docs/PARITY.md](docs/PARITY.md) and [docs/HOST-TESTS.md](docs/HOST-
 | [docs/CI.md](docs/CI.md) | Build pipeline, release process and code signing |
 | [desktop/START_HERE.txt](desktop/START_HERE.txt) | End-user notes for the Windows launcher |
 
-## Privacy and licence
+## Privacy
 
 The add-in has no analytics, no telemetry and no backend. Model credentials are stored unencrypted in the browser's local storage on your machine and are never written into Word documents. Office.js is loaded from Microsoft's official CDN at runtime.
 
-No WordCraft code or Microsoft visual assets are included.
+## Licence
 
-**Trademarks.** AETOS Office Assistant is a product realised and developed by [YOUBIQUO S.r.l.](https://www.youbiquo.eu) · [www.youbiquo.eu](https://www.youbiquo.eu) · [www.aetos-ai.it](https://www.aetos-ai.it). The AETOS and YOUBIQUO names and logos are the property of their respective owners and are used here only to identify this project.
+AETOS Office Assistant is released under the **Apache License 2.0**. See [LICENSE](LICENSE) for the full text and [NOTICE](NOTICE) for attribution.
+
+Apache-2.0 lets you use, modify and redistribute the code, including commercially, provided you keep the copyright and licence notices and state any changes. It includes an express patent grant (Section 3) and, importantly for this project, Section 6 states that **no trademark rights are granted**.
+
+**Trademarks.** AETOS Office Assistant is a product realised and developed by [YOUBIQUO S.r.l.](https://www.youbiquo.eu) · [www.youbiquo.eu](https://www.youbiquo.eu) · [www.aetos-ai.it](https://www.aetos-ai.it). The AETOS and YOUBIQUO names and logos are **not** covered by the Apache License and remain the property of their respective owners; they are included only to identify this project. Redistributions of modified versions must replace them.
+
+**Third-party components.** No third-party libraries are bundled and there are no npm dependencies. Office.js is not distributed with this project; it is loaded at runtime from Microsoft's CDN and remains subject to Microsoft's terms. No WordCraft code or Microsoft visual assets are included.
 
 **Logo sources.** The AETOS mark is taken from https://www.aetos-ai.it/assets/img/aetos/aetos_logo_short.svg and retained as `logo.svg`; `desktop/render-logo.ps1` produces the raster sizes without changing the artwork. The YOUBIQUO mark is taken from https://www.aetos-ai.it/assets/img/aetos/youbiquo-logo-y.svg and stored in `docs/logos/`.

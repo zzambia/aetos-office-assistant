@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 import { SafeError } from './core.js?v=0.2.11';
 import { canonicalXml, ignoredPart, parseXml } from './xml-fingerprint.js?v=0.2.11';
 // Hash uncompressed OPC parts, not ZIP timestamps or compression metadata.

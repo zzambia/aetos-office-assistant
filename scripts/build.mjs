@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 import { mkdir, cp, readFile, writeFile, readdir } from 'node:fs/promises';
 import { VERSION } from '../src/version.js';
 

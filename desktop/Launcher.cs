@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

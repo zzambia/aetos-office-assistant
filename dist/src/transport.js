@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 import { endpoint, LIMIT, SafeError, suggestionLimit } from './core.js?v=0.2.11';
 
 // SSE is framed by blank lines, independently of HTTP chunk boundaries.

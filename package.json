@@ -2,8 +2,12 @@
   "name": "aetos-office-assistant",
   "version": "0.2.11",
   "private": true,
+  "license": "Apache-2.0",
+  "author": "YOUBIQUO S.r.l. (https://www.youbiquo.eu)",
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.test.mjs",

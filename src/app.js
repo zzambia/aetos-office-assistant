@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 /* global Office */
 import { Connections, Session, SafeError, messages, bytes, suggestionLimit } from './core.js';
 import { generate } from './transport.js';

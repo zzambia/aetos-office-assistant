@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 // Synthetic host-test fixture. No inference, credentials or request-body logs.
 import http from 'node:http';
 import https from 'node:https';

@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 // Creates a trusted localhost TLS certificate for Word on macOS.
 // No npm dependencies. Uses mkcert when available, otherwise OpenSSL.
 import { access, chmod, mkdir, writeFile } from 'node:fs/promises';

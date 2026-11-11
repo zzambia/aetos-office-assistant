@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 // Installs dist/manifest.xml into Word for Mac's sideload folder and can clear
 // Word's disposable add-in caches. Only the add-in manifest is touched.
 import { copyFile, mkdir, readFile, readdir, rm } from 'node:fs/promises';

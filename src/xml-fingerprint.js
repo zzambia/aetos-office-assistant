@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 import { SafeError } from './core.js';
 
 const W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main';

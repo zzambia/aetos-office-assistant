@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 import { spawnSync } from 'node:child_process';
 import { mkdir, writeFile } from 'node:fs/promises';
 const test = spawnSync(process.execPath, ['--test', '--test-reporter=tap', 'tests/core.test.mjs','tests/fingerprint.test.mjs','tests/markdown.test.mjs','tests/transport.test.mjs','tests/word.test.mjs','tests/xml-fingerprint.test.mjs'], {encoding:'utf8'});

@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 // Read-only readiness check for running AETOS Office Assistant in Word on macOS.
 import { access, readFile } from 'node:fs/promises';
 import { constants, existsSync } from 'node:fs';

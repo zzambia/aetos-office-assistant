@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 YOUBIQUO S.r.l.
+
 /* global Office, Word */
 import { assertFresh, validateSelection, SafeError } from './core.js';
 import { fingerprint, changedArea, changeDetails } from './fingerprint.js';
