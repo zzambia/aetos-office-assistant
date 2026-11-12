@@ -30,7 +30,7 @@ enum Support {
     static var manifestInWef: URL { wordWef.appendingPathComponent("aetos-office-assistant.xml") }
     static var launchAgent: URL {
         FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/LaunchAgents/com.aetos.office-assistant.plist")
+            .appendingPathComponent("Library/LaunchAgents/it.aetos-ai.office-assistant.plist")
     }
     static var loginKeychain: String {
         FileManager.default.homeDirectoryForCurrentUser.path + "/Library/Keychains/login.keychain-db"
@@ -67,7 +67,7 @@ enum Support {
         if enabled {
             let executable = Bundle.main.executableURL?.path ?? ""
             let plist: [String: Any] = [
-                "Label": "com.aetos.office-assistant",
+                "Label": "it.aetos-ai.office-assistant",
                 "ProgramArguments": [executable],
                 "RunAtLoad": true
             ]
@@ -75,7 +75,7 @@ enum Support {
             try data.write(to: launchAgent)
             _ = run("/bin/launchctl", ["load", launchAgent.path])
         } else {
-            _ = run("/bin/launchctl", ["bootout", "gui/\(getuid())/com.aetos.office-assistant"])
+            _ = run("/bin/launchctl", ["bootout", "gui/\(getuid())/it.aetos-ai.office-assistant"])
             try? FileManager.default.removeItem(at: launchAgent)
         }
     }

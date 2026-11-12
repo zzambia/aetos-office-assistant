@@ -5,6 +5,18 @@ stages:
 default:
   interruptible: true
 
+# TEMPORARILY DISABLED: no self-hosted runners are available right now.
+#
+# Every job below is gated on $AETOS_GITLAB_CI_ENABLED. While that variable is
+# unset/empty the jobs are created but resolve to `when: never`, so they never
+# pick a runner and never fail the pipeline.
+#
+# Re-enable by one of:
+#   * Settings > CI/CD > Variables: add AETOS_GITLAB_CI_ENABLED = 1 (permanent),
+#   * or run a one-off pipeline with that variable set (temporary),
+#   * or drop `&& $AETOS_GITLAB_CI_ENABLED` from the three `rules:` lists below
+#     (restores the previous unconditional behaviour).
+
 # Runs on any Linux/Docker runner (fast, no platform-specific tooling).
 # `scripts/verify.mjs` runs the test suite and writes docs/automated-test-results.tap.
 test:
@@ -20,8 +32,9 @@ test:
       - docs/automated-test-results.tap
     expire_in: 2 weeks
   rules:
-    - if: $CI_COMMIT_TAG
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG && $AETOS_GITLAB_CI_ENABLED
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $AETOS_GITLAB_CI_ENABLED
+    - when: never
 
 # Produces the Windows launcher executable + embedded web archive.
 # Runner requirements: Windows, Node.js 22, .NET Framework 4.8 (csc.exe ships
@@ -40,8 +53,9 @@ build:windows:
       - desktop/release/aetos-web.zip
     expire_in: 2 weeks
   rules:
-    - if: $CI_COMMIT_TAG
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG && $AETOS_GITLAB_CI_ENABLED
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $AETOS_GITLAB_CI_ENABLED
+    - when: never
 
 # Produces the macOS .app bundle + distributable zip.
 # Runner requirements: macOS, Xcode command line tools (swiftc/lipo/iconutil),
@@ -62,5 +76,6 @@ build:macos:
       - macos/self-test-routes.txt
     expire_in: 2 weeks
   rules:
-    - if: $CI_COMMIT_TAG
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_TAG && $AETOS_GITLAB_CI_ENABLED
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $AETOS_GITLAB_CI_ENABLED
+    - when: never

@@ -5,7 +5,7 @@ cd "$(dirname "$0")/.."
 
 APP_NAME="AETOS Office Assistant"
 BINARY_NAME="AETOS-Office-Assistant"
-BUNDLE_ID="com.aetos.office-assistant"
+BUNDLE_ID="it.aetos-ai.office-assistant"
 BUILD_DIR="macos/build"
 APP_DIR="$BUILD_DIR/$APP_NAME.app"
 CONTENTS="$APP_DIR/Contents"

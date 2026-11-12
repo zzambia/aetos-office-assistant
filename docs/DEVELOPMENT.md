@@ -141,13 +141,13 @@ npm run sync:status
 npm run sync:remove
 ```
 
-This installs the LaunchAgent `com.aetos.office-assistant.sync`. It mirrors
+This installs the LaunchAgent `it.aetos-ai.office-assistant.sync`. It mirrors
 `origin/main` rather than your working copy, so it also picks up commits made
 through the GitHub web interface, and it runs whether or not the repository is
 open. Output is appended to `~/Library/Logs/aetos-sync.log`.
 
 ```sh
-launchctl kickstart -k "gui/$(id -u)/com.aetos.office-assistant.sync"   # run now
+launchctl kickstart -k "gui/$(id -u)/it.aetos-ai.office-assistant.sync"   # run now
 tail -f ~/Library/Logs/aetos-sync.log
 ```
 

@@ -21,7 +21,7 @@ if [ "$(uname -s)" != "Darwin" ]; then
 fi
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-label="com.aetos.office-assistant.sync"
+label="it.aetos-ai.office-assistant.sync"
 plist="$HOME/Library/LaunchAgents/$label.plist"
 log="$HOME/Library/Logs/aetos-sync.log"
 interval="${AETOS_SYNC_INTERVAL:-900}"

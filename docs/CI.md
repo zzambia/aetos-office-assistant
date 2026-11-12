@@ -74,7 +74,12 @@ powershell -ExecutionPolicy Bypass -File desktop/build.ps1   # Windows
 
 `.gitlab-ci.yml` is a GitLab equivalent for teams that must self-host runners
 instead of using GitHub-hosted ones. It uses runner tags `linux`, `windows` and
-`macos`; register those runners in GitLab **Settings > CI/CD > Runners**. On
+`macos`; register those runners in GitLab **Settings > CI/CD > Runners**.
+
+All GitLab jobs are currently gated on the `AETOS_GITLAB_CI_ENABLED` variable
+because no self-hosted runners are available. While it is unset the jobs resolve
+to `when: never` and no runner is requested; set it (e.g. to `1`) as a CI/CD
+variable to re-enable them. GitHub Actions is unaffected. On
 GitLab, `AETOS_SIGN_PFX` is a **File**-type variable (not base64), and the
 macOS variables use the same names listed above.
 
