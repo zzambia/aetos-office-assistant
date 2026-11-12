@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright 2026 YOUBIQUO S.r.l.
 
-import { SafeError, suggestionLimit, LIMIT } from './core.js?v=0.2.11';
+import { SafeError, suggestionLimit, LIMIT } from './core.js?v=0.2.12';
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
 const W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main';
 const REL = 'http://schemas.openxmlformats.org/package/2006/relationships';

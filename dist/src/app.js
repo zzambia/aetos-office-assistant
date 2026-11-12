@@ -2,10 +2,10 @@
 // Copyright 2026 YOUBIQUO S.r.l.
 
 /* global Office */
-import { Connections, Session, SafeError, messages, bytes, suggestionLimit } from './core.js?v=0.2.11';
-import { generate } from './transport.js?v=0.2.11';
-import { WordHost } from './word.js?v=0.2.11';
-import { VERSION } from './version.js?v=0.2.11';
+import { Connections, Session, SafeError, messages, bytes, suggestionLimit } from './core.js?v=0.2.12';
+import { generate } from './transport.js?v=0.2.12';
+import { WordHost } from './word.js?v=0.2.12';
+import { VERSION } from './version.js?v=0.2.12';
 const $ = id => document.getElementById(id), session = new Session();
 function supportsRawDeflate() { try { new DecompressionStream('deflate-raw'); return true; } catch { return false; } }
 $('build-version').textContent = `v${VERSION}`;

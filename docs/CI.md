@@ -18,8 +18,8 @@ The workflow is `.github/workflows/ci.yml`. It runs on pushes to `main`, on
 Tag the release and push the tag:
 
 ```sh
-git tag v0.2.11
-git push origin v0.2.11
+git tag v0.2.12
+git push origin v0.2.12
 ```
 
 The `release` job then attaches the Windows executable and the macOS zip to a

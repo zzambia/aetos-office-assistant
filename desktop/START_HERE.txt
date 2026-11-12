@@ -1,10 +1,10 @@
-AETOS Office Assistant - Windows launcher preview 0.2.11
+AETOS Office Assistant - Windows launcher preview 0.2.12
 
 SOURCE STATUS
-The launcher source and web assets are 0.2.11. The prebuilt executable is
+The launcher source and web assets are 0.2.12. The prebuilt executable is
 produced by GitHub Actions (download it from the latest GitHub Release or the
 Actions artifacts), or build it on Windows with desktop/build.ps1 to produce
-AETOS-Office-Assistant-0.2.11.exe.
+AETOS-Office-Assistant-0.2.12.exe.
 
 FIX IN 0.2.8
 Normalizes w14:paraId and w14:textId bookkeeping in footnotes/endnotes only.

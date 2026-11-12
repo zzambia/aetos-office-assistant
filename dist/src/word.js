@@ -2,10 +2,10 @@
 // Copyright 2026 YOUBIQUO S.r.l.
 
 /* global Office, Word */
-import { assertFresh, validateSelection, SafeError } from './core.js?v=0.2.11';
-import { fingerprint, changedArea, changeDetails } from './fingerprint.js?v=0.2.11';
-import { markdownToOoxml } from './markdown.js?v=0.2.11';
-import { VERSION } from './version.js?v=0.2.11';
+import { assertFresh, validateSelection, SafeError } from './core.js?v=0.2.12';
+import { fingerprint, changedArea, changeDetails } from './fingerprint.js?v=0.2.12';
+import { markdownToOoxml } from './markdown.js?v=0.2.12';
+import { VERSION } from './version.js?v=0.2.12';
 const readFailure = () => new SafeError('Word could not verify the document. Save it as DOCX, check host support and try again.');
 function officeCall(invoke) { return new Promise((resolve, reject) => invoke(r => r.status === Office.AsyncResultStatus.Succeeded ? resolve(r.value) : reject(readFailure()))); }
 async function digestDocument(diagnosticParts = null) {

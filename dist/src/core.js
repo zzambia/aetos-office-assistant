@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright 2026 YOUBIQUO S.r.l.
 
-import { selectionTags } from './xml-fingerprint.js?v=0.2.11';
+import { selectionTags } from './xml-fingerprint.js?v=0.2.12';
 export const LIMIT = Object.freeze({ instructions: 8192, source: 65536, suggestion: 65536, paragraphs: 4096, response: 1048576, timeout: 90000, connections: 32 });
 export class SafeError extends Error {}
 export const bytes = value => new TextEncoder().encode(value).byteLength;

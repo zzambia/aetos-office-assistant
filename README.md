@@ -100,7 +100,7 @@ Building, hosting and CI details: **[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)**
 
 ## Project status
 
-Version 0.2.11 is an **implementation preview**. It is not a declaration of verified feature parity with the original WordCraft plugin, and the add-in has **not been fully verified inside a real Word installation**. 56 automated tests pass.
+Version 0.2.12 is an **implementation preview**. It is not a declaration of verified feature parity with the original WordCraft plugin, and the add-in has **not been fully verified inside a real Word installation**. 56 automated tests pass.
 
 Target hosts are current Microsoft 365 Word on Windows (WebView2), current Microsoft 365 Word on macOS, and current Word for the web in a modern browser. The exact minimum tested Word build is **not yet established**. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the host policy.
 

@@ -91,8 +91,8 @@ tags, and manually:
 Cut a release by pushing a tag:
 
 ```sh
-git tag v0.2.11
-git push origin v0.2.11
+git tag v0.2.12
+git push origin v0.2.12
 npm run sync          # mirror branch and tags to the internal GitLab
 ```
 

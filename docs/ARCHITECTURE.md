@@ -112,4 +112,4 @@ The synthetic model endpoint used for host testing is documented in
 ## Known gaps
 
 Feature parity is tracked in [PARITY.md](PARITY.md) and real-Word behaviour in
-[HOST-TESTS.md](HOST-TESTS.md). Neither is complete for version 0.2.11.
+[HOST-TESTS.md](HOST-TESTS.md). Neither is complete for version 0.2.12.
